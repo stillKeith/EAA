@@ -8,11 +8,12 @@ do
 ./loadtest $i &
 #using hard coded time 
 sleep $time
+cpu=`mpstat -o JSON $time 1 | jq '100 - .sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
 # kills the loadtest process
 pkill loadtest
 
 #
-cpu=`mpstat -o JSON $time 1 | jq '100 - .sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
+
 #counts the number of transactions completed 
 cnt=`grep -c "Transaction Complete " synthetic.dat`
 echo $cnt $i $cpu >> results.dat
