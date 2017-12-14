@@ -27,6 +27,6 @@ cnt=`grep -c "Transaction Complete " synthetic.dat`
 #this outputs the Co, number of users and amount of cpu used 
 #to output each on the same line in the results.dat each value was stored in a variable 
 echo $cnt $i $cpu >> results.dat
-
+#end of loop
 done
 
