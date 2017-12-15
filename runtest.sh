@@ -12,9 +12,8 @@ sleep $time
 #mpstat shows what the cpu is doing 
 #its being dispalyed in JSON this makes it easier to filter what we are looking for 
 #we are only intrested in the cpu idle time. 
-#we are taking the idle time away from 100 to show the amount of the cpu being used 
 #we get this before killing the process as it will show the affect on the cpu
-cpu=`mpstat -o JSON $time 1 | jq '100 - .sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
+cpu=`mpstat -o JSON 1 1 | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
 # kills the loadtest process
 pkill loadtest
 
