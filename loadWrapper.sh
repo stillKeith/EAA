@@ -6,9 +6,10 @@ for i in {1..50}
 do
 #changed so would use i for the amount of cpu ./ loadtest.c $1
 ./loadtest $i &
+cpu=`mpstat -o JSON $time 1 | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
 #using hard coded time 
 sleep $time
-cpu=`mpstat -o JSON 1 1 | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
+
 # kills the loadtest process
 pkill loadtest
 
@@ -17,5 +18,6 @@ pkill loadtest
 #counts the number of transactions completed 
 cnt=`grep -c "Transaction Complete " synthetic.dat`
 echo $cnt $i $cpu >> results.dat
+echo $i  'Complete'
 
 done
