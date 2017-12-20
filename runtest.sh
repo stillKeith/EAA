@@ -7,13 +7,15 @@ do
 #runs the loadtest code
 #it uses the i variable from the for loop as the number of users in the system 
 ./loadtest $i &
-#sleep tells the program how long to wait before going to the next line
-sleep $time
 #mpstat shows what the cpu is doing 
 #its being dispalyed in JSON this makes it easier to filter what we are looking for 
 #we are only intrested in the cpu idle time. 
 #we get this before killing the process as it will show the affect on the cpu
-cpu=`mpstat -o JSON 1 1 | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
+#we are using the hardcoded time as this will be the observation time
+cpu=`mpstat -o JSON $time 1 | jq '.sysstat.hosts[0].statistics[0]."cpu-load"[0].idle'`
+#sleep tells the program how long to wait before going to the next line
+sleep $time
+
 # kills the loadtest process
 pkill loadtest
 
