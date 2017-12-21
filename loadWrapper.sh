@@ -13,8 +13,6 @@ sleep $time
 # kills the loadtest process
 pkill loadtest
 
-# 
-
 #counts the number of transactions completed 
 cnt=`grep -c "Transaction Complete " synthetic.dat`
 echo $cnt $i $cpu >> results.dat
