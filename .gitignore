@@ -1,3 +1,4 @@
+CAWordDoc.doc
 results_first_copy.dat
 X00072267.pdf
 .gitnore~
@@ -8,4 +9,6 @@ results_one.dat
 loadWrapper.sh
 runtest.sh~
 .runtest.sh.un~
+results_ca2.xlsx
 *.un~
+.*.*~
