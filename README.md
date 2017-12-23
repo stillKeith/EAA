@@ -8,4 +8,5 @@ the grep should check the syntiec file for the amount of transactions complete
 finally it outputs the transactions coplete, users and cpu stress to a 
 results file 
 
-"# EAA" 
+The commands used were all used in previous class labs  
+
